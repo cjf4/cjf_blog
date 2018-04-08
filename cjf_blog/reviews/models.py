@@ -7,6 +7,11 @@ class Review(models.Model):
 	review_summary = models.CharField(max_length = 50)
 	category = models.ForeignKey('Category', null=True, on_delete=models.SET_NULL)
 
+	def __str__(self):
+		return self.subject_name
+
 class Category(models.Model):
 	category = models.CharField(max_length = 30)
 
+	def __str__(self):
+		return self.category
