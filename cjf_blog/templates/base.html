@@ -22,8 +22,8 @@
       {% block sidebar %}
       <ul class="sidebar-nav">
           <li><a href="{% url 'reviews:index' %}">Home</a></li>
-          <li><a href="">All reviews</a></li>
-          <li><a href="">About</a></li>
+          <li><a href="{% url 'reviews:review_list' %}">All reviews</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
       </ul>
      {% endblock %}
       </div>

@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import include, path
 
 from django.views.generic.base import RedirectView
+from reviews import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reviews/', include('reviews.urls')),
     
     #index page should go right to the reviews index   
-    path('', RedirectView.as_view(url = 'reviews'))
+    path('', RedirectView.as_view(url = 'reviews')),
+    path('about', views.about, name='about')
 
 ]
