@@ -1,10 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .models import Review
 
 from .forms import CreateReviewForm
 
 def index(request):
-	return HttpResponse("No reviews yet!")
+	num_reviews = Review.objects.all().count()
+
+	return render(
+		request,
+		'reviews/index.html',
+		context = {'num_reviews': num_reviews}
+		)
 
 def create(request, pk = None):
 	if request.method == 'POST':
