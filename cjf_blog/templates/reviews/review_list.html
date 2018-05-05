@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>All reviews<h1>
+
+<ul>
+{% for review in review_list %}
+	<li> <a href="{% url 'reviews:index' %}">{{ review.review_title }}</a> </li>
+{% endfor %}
+</ul>
+{% endblock %}

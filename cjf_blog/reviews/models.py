@@ -1,4 +1,6 @@
 from django.db import models
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 
 class Review(models.Model):
 	pub_date = models.DateTimeField('publication date')
@@ -8,6 +10,11 @@ class Review(models.Model):
 	category = models.ForeignKey('Category', null=True, on_delete=models.SET_NULL)
 	review_text = models.TextField(default = "No review written.")
 	subject = models.ForeignKey('Subject', null=True, on_delete=models.SET_NULL)
+	review_markdown = MarkdownField()
+
+	@property
+	def formatted_markdown(self):
+		return markdownify(self.review_markdown)
 
 	def __str__(self):
 		return self.review_title

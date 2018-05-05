@@ -18,6 +18,8 @@ from django.urls import include, path
 
 from django.views.generic.base import RedirectView
 from reviews import views
+from markdownx import urls as markdownx
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +28,6 @@ urlpatterns = [
     #index page should go right to the reviews index   
     path('', RedirectView.as_view(url = 'reviews')),
     path('about', views.about, name='about')
+    url(r'^markdownx/', include(markdownx))
 
 ]

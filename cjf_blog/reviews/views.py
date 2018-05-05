@@ -4,6 +4,9 @@ from .models import Review
 
 from .forms import CreateReviewForm
 
+from django.views import generic
+
+
 def index(request):
 	num_reviews = Review.objects.all().count()
 
@@ -13,13 +16,20 @@ def index(request):
 		context = {'num_reviews': num_reviews}
 		)
 
-def review_list(request):
-	all_reviews = Review.objects.all()
+class ReviewListView(generic.ListView):
+	model = Review
 
-	return render(
-		request,
-		'reviews/all_reviews.html',
-		context = {'all_reviews': all_reviews})
+class ReviewDetailView(generic.DetailView):
+	model = Review
+
+
+#def review_list(request):
+	# all_reviews = Review.objects.all()
+
+	# return render(
+	# 	request,
+	# 	'reviews/all_reviews.html',
+	# 	context = {'all_reviews': all_reviews})
 
 def about(request):
 	return render(request, 'about.html')
@@ -28,15 +38,15 @@ def about(request):
 
 
 
-def create(request, pk = None):
-	if request.method == 'POST':
-		#handle review submission logic
-		pass
-	else:
-		if pk is None:
-			form = CreateReviewForm()
-		else:
-			pass
+#def create(request, pk = None):
+#	if request.method == 'POST':
+#		#handle review submission logic
+#		pass
+#	else:
+#		if pk is None:
+#			form = CreateReviewForm()
+#		else:
+#			pass
 			#get object or 404
 			#render the form with the form filled in
-	return render(request, 'reviews/create.html', {'form': form})
+#	return render(request, 'reviews/create.html', {'form': form})
