@@ -8,9 +8,8 @@ class Review(models.Model):
 	review_title = models.CharField(max_length = 100)
 	review_summary = models.CharField(max_length = 50)
 	category = models.ForeignKey('Category', null=True, on_delete=models.SET_NULL)
-	review_text = models.TextField(default = "No review written.")
 	subject = models.ForeignKey('Subject', null=True, on_delete=models.SET_NULL)
-	review_markdown = MarkdownField()
+	review_markdown = MarkdownxField(default = 'Post not written yet...')
 
 	@property
 	def formatted_markdown(self):

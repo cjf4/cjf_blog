@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import url
 
 from django.views.generic.base import RedirectView
 from reviews import views
@@ -27,7 +28,7 @@ urlpatterns = [
     
     #index page should go right to the reviews index   
     path('', RedirectView.as_view(url = 'reviews')),
-    path('about', views.about, name='about')
+    path('about', views.about, name='about'),
     url(r'^markdownx/', include(markdownx))
 
 ]

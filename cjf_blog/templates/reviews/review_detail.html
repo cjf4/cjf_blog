@@ -3,5 +3,5 @@
 <h1> {{review.review_title}} </h1>
 <h3> {{review.review_summary}} </h3>
 
-<p> {{review.review_text}} <p>
+<p> {{review.formatted_markdown|safe}} <p>
 {% endblock %}
