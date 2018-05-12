@@ -1,6 +1,9 @@
 from django.db import models
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
+from django.urls import reverse
+
+
 
 class Review(models.Model):
 	pub_date = models.DateTimeField('publication date')
@@ -17,6 +20,10 @@ class Review(models.Model):
 
 	def __str__(self):
 		return self.review_title
+
+	def get_absolute_url(self):
+		return reverse('review-detail', args = [self.id])
+
 
 	class Meta:
 		ordering = ["-pub_date"]
