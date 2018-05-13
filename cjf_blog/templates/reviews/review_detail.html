@@ -2,6 +2,9 @@
 {% block content %}
 <h1> {{review.review_title}} </h1>
 <h3> {{review.review_summary}} </h3>
+<p> {{review.pub_date}}
 
 <p> {{review.formatted_markdown|safe}} <p>
+
+<p><b> Score: {{review.score}} </b></p>	
 {% endblock %}

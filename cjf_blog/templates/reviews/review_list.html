@@ -5,8 +5,8 @@
 <h1>All reviews<h1>
 
 <ul>
-{% for review in review_list %}
-	<li> <a href="{% url 'reviews:review-detail' review.id %}">{{ review.review_title }}</a> </li>
-{% endfor %}
+	{% for review in review_list %}
+		<li> <a href="{% url 'reviews:review-detail' review.id %}">{{ review.review_title }}</a> </li>
+	{% endfor %}
 </ul>
 {% endblock %}
